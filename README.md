@@ -5,3 +5,35 @@ As my first Django project, this was a learning experience. I created it with Va
 
 Some screenshots are below:
 
+![about](sample/about.png)
+About
+
+![ask](sample/ask.png)
+Ask
+
+![bad](sample/bad.png)
+Bad
+
+![chat](sample/chat.png)
+Chat
+
+![earn](sample/earn.png)
+earn
+
+![footer](sample/footer.png)
+Footer
+
+![home](sample/home.png)
+Home 
+
+![inbox](sample/inbox.png)
+inbox
+
+![index](sample/index.png)
+index
+
+![login](sample/login.png)
+Login
+
+![refunds](sample/refunds.png)
+Refunds
