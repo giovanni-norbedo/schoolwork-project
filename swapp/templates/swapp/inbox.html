@@ -1,0 +1,52 @@
+{% extends "swapp/source.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="jumbotron mb-0">
+    <h1 class="display-4"><i class="fa fa-inbox" aria-hidden="true"></i> 
+        MY STUFF
+    </h1>
+    <p class="lead">
+        Here are all the replies to your questions.
+    </p>
+</div>
+<div class="p-5">
+    {% for reply in replies %}
+        <div class="media my-4ml-5">
+            <div class="media-body">
+                <span class="badge badge-pill badge-light my-3">{{ reply.ask.date }}</span>
+                <h5 class="my-2">
+                    {{ reply.ask.title }}
+                </h5> 
+                <p class="my-2">{{ reply.ask.text }}</p>
+            </div>
+            {% if reply.ask.file != "" and reply.ask.file != None %}
+            <img class="align-self-center ml-3 rounded" height="auto" width="200px" src="/media/{{ reply.ask.file }}" alt="{{ reply.ask.file }}"> 
+            {% endif %}
+        </div>
+        <div class="media my-4ml-5 border-left ml-4 pl-3">
+            <div class="media-body">
+                <span class="badge badge-pill badge-light my-3">{{ reply.date }}</span>
+                <p class="mb-2" style="max-height: 100px; overflow:hidden; text-overflow:ellipsis;">{{ reply.text }}</p>
+                {% if reply.yn == False %}
+                <div class="mt-4 mb-3">
+                    <h6>Is it a good reply?</h6>
+                    <a class="btn btn-success d-inline px-5" href="/thanks/{{reply.id}}" role="button">Yes</a>
+                    <a class="btn btn-danger d-inline px-3" href="/bad/{{reply.id}}" role="button">No</a>
+                </div>
+                {% endif %}
+            </div>
+            {% if reply.file != "" and reply.file != None %}
+            <img class="align-self-center ml-3 rounded" height="auto" width="200px" src="/media/{{ reply.file }}" alt="{{ reply.file }}"> 
+            {% endif %}
+        </div>
+        <hr class="my-2">
+    {% endfor %}
+</div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}

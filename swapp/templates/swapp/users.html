@@ -1,0 +1,36 @@
+{% extends "swapp/source.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if user.is_superuser %}
+    <div class="p-5">
+        {% for usernew in usernews %}
+            <a href="/user/{{ usernew.id }}"><h5 class="mt-4">{{ usernew.user.username }} 
+                <span class="badge badge-pill badge-primary">
+                    {% for n_usernew_d, n_msgs_d in n_num_msgs.items %}
+                        {% if usernew.user.username == n_usernew_d %}
+                            {{ n_msgs_d }}
+                        {% endif %}
+                    {% endfor %}
+                </span>
+                <span class="badge badge-pill badge-secondary">
+                    {% for usernew_d, msgs_d in num_msgs.items %}
+                        {% if usernew.user.username == usernew_d %}
+                            Totali: {{ msgs_d }}
+                        {% endif %}
+                    {% endfor %}
+                </span>
+                <span class="badge badge-pill badge-secondary">
+                    Coins: {{ usernew.coins }}
+                </span>
+            </h5></a>
+            <hr class="my-4">
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "swapp/source.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div id="login" class="p-5">
+    <h2>Log In page</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form| crispy }}
+        <input class="btn btn-success text-white my-3" type="submit" id="publish" value="Log In">
+    </form>
+</div>
+{% endblock %}

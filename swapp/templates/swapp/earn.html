@@ -1,0 +1,32 @@
+{% extends "swapp/source.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="p-5">
+        {% for ask in asks %}
+            {% if not ask.done %}
+            <div class="media my-3">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">
+                        {{ask.title}}
+                        <span class="badge badge-primary">coins: {{ask.coins}}</span>
+                    </h5> 
+                    <span class="badge badge-pill badge-light mb-3">{{ask.date}}</span>
+                    <p class="mb-2" style="max-height: 100px; overflow:hidden; text-overflow:ellipsis;">{{ask.text}}</p>
+                    <a class="btn btn-primary" href="..\reply\{{ ask.id }}" role="button">Reply</a>
+                </div>
+                {% if ask.file != "" and ask.file != None %}
+                <img class="align-self-center ml-3 rounded" height="auto" width="200px" src="../media/{{ ask.file }}" alt="{{ ask.file }}"> 
+                {% endif %}
+            </div>
+            <hr class="my-2">
+            {% endif %}
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}

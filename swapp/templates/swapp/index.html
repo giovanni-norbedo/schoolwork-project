@@ -1,0 +1,19 @@
+{% extends "swapp/source.html" %}
+{% block content %}
+<div class="jumbotron mb-0">
+    <h1 class="display-4">
+        Welcome!
+    </h1>
+    <p class="lead">
+        Log in or sign up anonymously without any personal data.
+    </p>
+</div>
+<div class="row p-5">
+    <div class="col-6 text-center">
+        <a class="btn btn-primary btn-lg btn-block" href="{% url 'login' %}" role="button"><i class="fa fa-sign-in" aria-hidden="true"></i>  Log in</a>
+    </div>
+    <div class="col-6 text-center">
+        <a class="btn btn-secondary btn-lg btn-block" href="{% url 'signup' %}" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sign up</a>
+    </div>
+</div>
+{% endblock %}

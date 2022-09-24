@@ -1,0 +1,45 @@
+{% extends "swapp/source.html" %}
+{% block content %}
+<div class="jumbotron mb-5">
+    <h1 class="display-3 text-center">ABOUT</h1>
+</div>
+
+<div class="card-deck mx-3">
+    <div class="card">
+        <h5 class="card-header">The Project</h5>
+        <div class="card-body">    
+            <p class="card-text">
+                If you have a maths equation that is too complicated or you are too tired,
+                go to <a href="/ask" class="my-link">Ask</a>
+                and enter all the data that other users will need to do your exercises.
+                You will find the answers to your questions on <a href="/inbox" class="my-link">My Stuff</a>
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">The Website</h5>
+        <div class="card-body">
+            <p class="card-text">
+                This site was created entirely by two high school students using
+                <a href="https://www.w3schools.com/html/" class="my-link">HTML5</a>,
+                <a href="https://www.w3schools.com/Css/" class="my-link">CSS3</a>,
+                <a href="https://www.python.org/" class="my-link">Python</a>,
+                <a href="https://www.djangoproject.com/" class="my-link">Django Web Framework</a> and
+                <a href="https://getbootstrap.com/" class="my-link">Bootstrap</a>
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">How it works</h5>
+        <div class="card-body">
+            <p class="card-text">
+                Ask for your exercises in exchange for coins, which are earned by solving other people's problems.
+                On the Ask page you enter all the data and pictures relating to your exercises,
+                which will then be displayed on Earn by other users.
+                The completed exercises will be displayed in My Stuff where you can say whether they were useful or not.
+                If the answer was not useful you will get a refund.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

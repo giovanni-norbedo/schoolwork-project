@@ -1,0 +1,34 @@
+{% extends "swapp/source.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if user.is_superuser %}
+    <div class="p-5">
+        {% for bad in bads %}
+            {% if bad.reply.done == False %}
+                <p class="lead">Ask:</p>
+                <p class="my-0"><strong>{{bad.reply.to_usernew.user.username }}</strong> <span class="badge badge-pill badge-primary mb-1">Coins: {{bad.reply.ask.coins }}</span> <span class="badge badge-pill badge-light mb-2">{{bad.reply.ask.date }}</span></p>
+                <p><em>{{ bad.reply.ask.title }}</em></p>
+                <p>{{ bad.reply.ask.text }}</p>
+                <div class="ml-3 border-left pl-3">
+                    <p class="lead">Reply:</p>
+                    <p class="my-0"><strong>{{bad.reply.from_usernew.user.username }}</strong> <span class="badge badge-pill badge-light mb-1">{{bad.reply.date }}</span></p>
+                    <p>{{ bad.reply.text }}</p>
+                </div>
+                <div class="ml-5 border-left pl-3">
+                    <p class="lead">Bad:</p>
+                    <p class="my-0"><strong>{{bad.reply.to_usernew.user.username }}</strong> <span class="badge badge-pill badge-light mb-1">{{bad.date }}</span></p>
+                    <p>{{bad.text}}</p>
+                </div>
+                <a class="btn btn-primary my-3" href="/solved/{{ bad.id }}" role="button">Write</a><br>
+                <hr class="my-2">
+            {% endif %}
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}

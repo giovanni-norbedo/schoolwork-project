@@ -1,0 +1,50 @@
+{% extends "swapp/source.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="border-left pl-3">
+    {% if len > 1 %}
+        <p class="mt-3 mb-0"><span class="badge badge-pill badge-primary my-3">{{ len }}</span> new notifications</p>
+    {% elif len == 1 %}
+        <p class="mt-3 mb-0"><span class="badge badge-pill badge-primary my-3">{{ len }}</span> new notification</p>
+    {% else %}
+        <p class="mt-3 mb-0">You don't have new notifications.</p>
+    {% endif %}
+    <a class="btn btn-primary my-3" href="/inbox" role="button">Go to My Stuff</a>
+</div>
+
+<div class="jumbotron mb-0">
+    <h1 class="display-4 mb-3">Hello, {{ user.username }}!</h1>
+    <h4 class="bg-dark text-white p-2 mb-2 rounded" style="width: max-content;">Coins: <span class="bg-light text-dark px-2 rounded">{{new.coins}}</span></h4>
+    <p class="lead mb-5">Welcome on your home page. Only you can see this profile and all your informations are private.</p>
+    <hr class="my-4">
+    <table class="table table-bordered table-sm table-striped table-responsive-sm table-dark">
+        <tbody>
+            <tr>
+                <th scope="row">Level:</th>
+                <td>{{new.liv}}</td>
+                <th scope="row">Evaluation:</th>
+                <td>{{new.evaluation}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Coins earned:</th>
+                <td>{{new.coins_earned}}</td>
+                <th scope="row">Coins spent:</th>
+                <td>{{new.coins_spent}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Asks resolved:</th>
+                <td>{{new.asks_resolved}}</td>
+                <th scope="row">Asks made:</th>
+                <td>{{new.asks_made}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "swapp/source.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="p-5">
+        <h1 class="mb-5">Refunds</h1>
+        {% for solved in solveds %}
+        <hr class="my-2 border-dark">
+        <p class="lead">Ask:</p>
+        <p class="mt-3"><strong>{{solved.bad.reply.to_usernew.user.username }}</strong> <span class="badge badge-pill badge-primary mb-2">Coins: {{solved.bad.reply.ask.coins }}</span> <span class="badge badge-pill badge-light mb-2">{{solved.bad.reply.ask.date }}</span></p>
+        <p><em>{{ solved.bad.reply.ask.title }}</em></p>
+        <p>{{ solved.bad.reply.ask.text }}</p>
+        <div class="ml-3 border-left pl-3">
+            <p class="lead">Reply:</p>
+            <p class="mt-3"><strong>{{solved.bad.reply.from_usernew.user.username }}</strong> <span class="badge badge-pill badge-light mb-2">{{solved.bad.reply.date }}</span></p>
+            <p>{{ solved.bad.reply.text }}</p>
+        </div>
+        <div class="ml-5 pl-3 border-left">
+            <p>{{ solved.text }}</p>
+            <p><strong></strong>{{ solved.coins_ask }} coins were refunded.</p>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}>

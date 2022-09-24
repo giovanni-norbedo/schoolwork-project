@@ -1,0 +1,19 @@
+{% extends "swapp/source.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="p-5">
+        <form enctype="multipart/form-data" action="" method="post">
+            {% csrf_token %}
+            {{ form| crispy }}
+            <input class="btn btn-success text-white my-3" type="submit" id="publish" value="Publish">
+        </form>
+    </div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}

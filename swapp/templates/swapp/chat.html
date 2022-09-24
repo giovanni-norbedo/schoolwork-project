@@ -1,0 +1,23 @@
+{% extends "swapp/source.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if user.is_superuser %}
+    <div class="p-5">
+        {% for msg in chat %}
+            {% if not '?' in msg.title and msg.done == False %}
+                <p class="badge badge-pill badge-dark mb-3">{{msg.date}}</p>
+                <h5>{{msg.title}}</h5>
+                <p>{{msg.text}}</p>
+                <a class="btn btn-primary my-3" href="/adminwrite/{{ msg.id }}" role="button">Write</a><br>
+                <hr class="my-2">
+            {% endif %}
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">
+            <a href="{% url 'login' %}">Log in or register first.</a>
+        </h1>
+    </div>
+{% endif %}
+{% endblock %}

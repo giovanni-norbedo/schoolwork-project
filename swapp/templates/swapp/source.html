@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>SchoolWork Project</title>
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <style>
+        img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+
+        a.my-link {
+            background: linear-gradient(
+                to bottom, #007bff 0%,
+                #007bff 100%
+            );
+            background-position: 0 100%;
+            background-repeat: repeat-x;
+            background-size: 4px 4px;
+            color: #007bff;
+            text-decoration: none;
+            transition: background-size .2s;
+        }
+
+        a.my-link:hover {
+            color: #fff ;
+            background-size: 4px 100%;
+        }
+    </style>
+    <div class="" style="width: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href="" class="navbar-brand">SchoolWork Project</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="/home" class="nav-link">
+                            <i class="fa fa-home" aria-hidden="true"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/inbox" class="nav-link">
+                            <i class="fa fa-inbox" aria-hidden="true"></i> My Stuff
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/ask" class="nav-link">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i> Ask
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/earn" class="nav-link">
+                            <i class="fa fa-money" aria-hidden="true"></i> Earn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/refunds" class="nav-link">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i> Refunds
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Other
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a href="/about" class="dropdown-item">
+                                <i class="fa fa-users" aria-hidden="true"></i> About
+                            </a>
+                            <a href="/contactus" class="dropdown-item">
+                                <i class="fa fa-pencil" aria-hidden="true"></i> Contact Us
+                            </a>
+                            <a href="/admin" class="dropdown-item">
+                                <i class="fa fa-user" aria-hidden="true"></i> Admin
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'logout' %}" class="dropdown-item">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+                            </a>
+                        </div>
+                    </li>
+                    {% if user.is_superuser %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 0 0-5.86 2.929 2.929 0 0 0 0 5.858z"/>
+                                </svg> Admin Tools
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="/chat" class="dropdown-item">
+                                    <i class="fa fa-comments" aria-hidden="true"></i> Chat
+                                </a>
+                                <a href="/users" class="dropdown-item">
+                                    <i class="fa fa-server" aria-hidden="true"></i> Users
+                                </a>
+                                <a href="/bads" class="dropdown-item">
+                                    <i class="fa fa-frown-o" aria-hidden="true"></i> Bads
+                                </a>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <div style="min-height: 100vh;">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer class="page-footer font-small blue pt-4 text-white bg-dark">
+            <div class="container-fluid text-center text-md-left">
+                <div class="row">
+                    <div class="col-md-8 mt-md-0 mt-3">
+                        <h4 class="text-uppercase font-weight-bold">SchoolWork Project</h4>
+                        <p>While you are using this site, you don't agree anything and you don't accept any Term of Service and Privacy Policy.</p>
+                        <p>No rights reserved.</p>
+                    </div>
+                    <hr class="clearfix w-100 d-md-none pb-3">
+                    <div class="col-md-4 mb-md-0 mb-3">
+                        <h5 class="text-uppercase font-weight-bold">
+                            <i class="fa fa-bullhorn" aria-hidden="true"></i> Follow Us
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="https://instagram.com/{schoolwork_project_username}"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+                            </li>
+                            <li>
+                                <a href="https://t.me/joinchat/{schoolwork_project_username}"><i class="fa fa-telegram" aria-hidden="true"></i> Telegram</a>
+                            </li>
+                            <li>
+                                <a href="https://youtube.com/c/{schoolwork_project_username}"><i class="fa fa-youtube-square" aria-hidden="true"></i> YouTube</a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/{schoolwork_project_username}"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+                            </li>
+                            <li>
+                                <a href="https://reddit.com/r/{schoolwork_project_username}"><i class="fa fa-reddit" aria-hidden="true"></i> Reddit</a>
+                            </li>
+                            <li>
+                                <a href="https://tiktok.com/@{schoolwork_project_username}"><i class="fa fa-music" aria-hidden="true"></i> TikTok</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright text-center py-3">
+                Without any Copyright © 2020-2100 SchoolWork-Project.
+            </div>
+        </footer>
+    </div>
+
+    <!-- BOOTSTRAP DEPENDECIES -->
+    <script async src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
